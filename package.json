@@ -1,0 +1,17 @@
+{
+  "name": "smtp2webhook",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "dkim": "^0.4.5",
+    "mailparser": "^2.4.3",
+    "smtp-server": "^3.4.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
