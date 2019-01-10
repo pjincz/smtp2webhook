@@ -5,10 +5,14 @@
   "main": "app.js",
   "dependencies": {
     "dkim": "^0.4.5",
+    "form-data": "^2.3.3",
     "mailparser": "^2.4.3",
+    "node-fetch": "^2.3.0",
     "smtp-server": "^3.4.7"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "url-search-params": "^1.1.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
