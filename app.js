@@ -33,8 +33,11 @@ var server = new SMTPServer({
       try {
         var mail = await simpleParser(message);
         var dkim = await dkim_verify(message);
-        if (!dkim)
-          return callback(new Error('DKIM Verify Failed'));
+        if (!dkim) {
+          var e = new Error('DKIM Verify Failed');
+          e.responseCode = 554;
+          return callback(e);
+        }
 
         var res = await upstream.send({
           ak: config.ak,
@@ -44,19 +47,28 @@ var server = new SMTPServer({
           textcontent: mail.text,
         });
         if (res.showapi_res_code == 1) {
-          callback();
+          return callback();
         } else if (res.showapi_res_error) {
-          callback(new Error(res.showapi_res_error));
+          var e = new Error(res.showapi_res_error);
+          e.responseCode = 554;
+          return callback(e);
         } else {
-          callback(new Error('Internal Error'));
+          var e = new Error('Internal Error');
+          e.responseCode = 554;
+          return callback(e);
         }
-        callback();
       } catch(e) {
         console.error(e);
-        callback(new Error('Internal Error'));
+        var e = new Error('Internal Error');
+        e.responseCode = 554;
+        return callback(e);
       }
     });
   },
+});
+
+server.on('error', function(e) {
+  console.error(e);
 });
 
 server.listen(25);
