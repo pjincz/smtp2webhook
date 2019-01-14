@@ -25,6 +25,8 @@
 
 ### 运行服务器
 
+注意，由于需要监听特殊端口，程序需要在root下运行，或者在系统配置里特殊处理。
+
     $ cd path_to_repo
-    $ node app.js
+    $ sudo node app.js
 
