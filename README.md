@@ -8,8 +8,8 @@
 
 2. 安装依赖
 
-$ cd path_to_repo
-$ npm i
+    $ cd path_to_repo
+    $ npm i
 
 3. 修改配置文件config.js
 
@@ -25,7 +25,7 @@ $ npm i
 
 5. 运行服务器
 
-$ cd path_to_repo
-$ node app.js
+    $ cd path_to_repo
+    $ node app.js
 
 6. 从任意邮箱向anybody@aaa.com发送测试邮件
