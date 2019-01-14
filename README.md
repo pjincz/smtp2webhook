@@ -4,15 +4,16 @@
 
 1. 安装node.js，开发时用的版本是10.14.2，其他版本应该问题不大。
 
-略
+推荐从 https://nodejs.org 下载，并安装到/opt目录
 
 2. 安装依赖
 
+$ cd path_to_repo
 $ npm i
 
 3. 修改配置文件config.js
 
-略
+根据需要修改就好
 
 4. 修改域名记录
 
@@ -22,4 +23,9 @@ $ npm i
 
 然后创建aaa.com的多条mx记录，分别指向mx1.aaa.com, mx2.aaa.com, ...
 
-5. 从任意邮箱向anybody@aaa.com发送测试邮件
+5. 运行服务器
+
+$ cd path_to_repo
+$ node app.js
+
+6. 从任意邮箱向anybody@aaa.com发送测试邮件
