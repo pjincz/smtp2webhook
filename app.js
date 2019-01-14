@@ -39,12 +39,20 @@ var server = new SMTPServer({
           return callback(e);
         }
 
+        var attachments = [];
+        for (var a of mail.attachments) {
+          if (a.contentType && a.contentType.match(/^image\//)) {
+            attachments.push(a.content.toString('base64'));
+          }
+        }
+
         var res = await upstream.send({
           ak: config.ak,
           sender: mail.from.text,
           receiver: mail.to.text,
           subject: mail.subject,
           textcontent: mail.text,
+          attachment: attachments.length > 0 ? attachments.join('|') : undefined,
         });
         if (res.showapi_res_code == 1) {
           return callback();

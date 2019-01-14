@@ -5,7 +5,7 @@ var fetch = require('node-fetch');
 exports.send = async function(body) {
   var form = new URLSearchParams();
   for (var key in body) {
-    if (body.hasOwnProperty(key)) {
+    if (body.hasOwnProperty(key) && body[key] !== undefined) {
       form.append(key, body[key]);
     }
   }
